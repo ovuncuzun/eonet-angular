@@ -1,0 +1,22 @@
+<table class=" table sortable">
+    <thead>
+        <tr>
+            <th sortable-column="id">ID</th>
+            <th sortable-column="title">Event Name</th>
+            <th sortable-column="Category"><b></b> <i class="fa fa-fw fa-sort"></i>Category
+            </th>
+            <th sortable-column="sources">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let event of allEventList" [ngStyle]="{ 'background-color': event.closed ? 'grey': 'white'}">
+            <td>{{event.id}}</td>
+            <td>{{event.title}}</td>
+            <td>{{event.categories[0].title}}</td>
+            <td><span *ngIf="event.closed; else open">Closed</span></td>
+            <ng-template #open>
+                <span>Open</span>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
